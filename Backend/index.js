@@ -12,7 +12,9 @@ import { app, server } from "./SocketIO/server.js";
 dotenv.config();
 
 // middleware
-app.use(cors());
+app.use(cors({origin: "https://chattify-c4gj-git-main-anuj-kushwahas-projects-db7b729e.vercel.app",  
+    credentials: true,
+    methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],}));
 app.use(express.json());
 app.use(cookieParser());
 
