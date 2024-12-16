@@ -10,10 +10,10 @@ function useGetAllUsers() {
       try {
         const token = Cookies.get("jwt");
         const response = await axios.get("https://chattify-vfz5.onrender.com/api/user/allusers", {
-          credentials: "include",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          withCredentials: true,
+          // headers: {
+          //   Authorization: `Bearer ${token}`,
+          // },
         });
         setAllUsers(response.data);
         setLoading(false);
