@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthProvider";
 import io from "socket.io-client";
 const socketContext = createContext();
+//import "dotenv/config";
 
 
 export const useSocketContext = () => {
@@ -16,7 +17,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("https://chattify-vfz5.onrender.com", {
+      const socket = io(`https://chattify-vfz5.onrender.com`, {
         query: {
           userId: authUser.user._id,
         },
