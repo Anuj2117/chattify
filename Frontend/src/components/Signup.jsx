@@ -29,7 +29,7 @@ function Signup() {
     };
     // console.log(userInfo);
     await axios
-      .post(`https://chattify-vfz5.onrender.com/api/user/Signup`, userInfo)
+      .post(`https://chattify-vfz5.onrender.com/api/user/Signup`, userInfo, { withCredentials: true })
       .then((response) => {
         if (response.data) {
           toast.success("Signup successful");

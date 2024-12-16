@@ -5,7 +5,6 @@ import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
-
 function Login() {
   const [authUser, setAuthUser] = useAuth();
 
@@ -22,10 +21,11 @@ function Login() {
     };
 
     axios
-      .post(`https://chattify-vfz5.onrender.com/api/user/login`, userInfo)
+      .post(`https://chattify-vfz5.onrender.com/api/user/login`, userInfo, {
+        withCredentials: true,
+      })
       .then((response) => {
         if (response.data) {
-          
           toast.success("Login successful");
         }
         localStorage.setItem("ChatApp", JSON.stringify(response.data));
@@ -51,7 +51,6 @@ function Login() {
             Login with your{" "}
             <span className="text-blue-600 font-semibold">Account</span>
           </h2>
-        
 
           {/* Email */}
           <label className="input input-bordered flex items-center gap-2">
