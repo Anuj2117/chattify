@@ -12,9 +12,16 @@ import { app, server } from "./SocketIO/server.js";
 dotenv.config();
 
 // middleware
-app.use(cors({origin: "https://chattify-c4gj-git-main-anuj-kushwahas-projects-db7b729e.vercel.app",  
+app.use(
+  cors({
+    origin:
+      "https://chattify-c4gj-git-main-anuj-kushwahas-projects-db7b729e.vercel.app",
     credentials: true,
-    methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],}));
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    allowedHeaders: ["content-Type", "Authorization"],
+  })
+);
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -22,17 +29,16 @@ const PORT = process.env.PORT || 6970;
 const URI = process.env.MONGODB_URI;
 
 try {
-    mongoose.connect(URI);
-    console.log("Connected to MongoDB");
+  mongoose.connect(URI);
+  console.log("Connected to MongoDB");
 } catch (error) {
-    console.log(error);
+  console.log(error);
 }
 
 //routes
 app.use("/api/user", userRoute);
 app.use("/api/message", messageRoute);
 
-
 server.listen(PORT, () => {
-    console.log(`Server is Running on port ${PORT}`);
+  console.log(`Server is Running on port ${PORT}`);
 });
