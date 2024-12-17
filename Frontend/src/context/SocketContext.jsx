@@ -13,6 +13,7 @@ export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [authUser] = useAuth();
+  
   //console.log(onlineUsers+"im online")
 
   useEffect(() => {
