@@ -5,8 +5,10 @@ const secureRoute = async (req, res, next) => {
 
   try {
 
-    const token = req.cookies.jwt;
-    console.log(token);
+    const token = req.cookies?.jwt || req.headers?.cookie;
+
+    console.log('im the token '+ token);
+    
     if (!token) {
       return res.status(401).json({ error: "No token, authorization denied" });
     }
@@ -23,6 +25,7 @@ const secureRoute = async (req, res, next) => {
     }
     req.user = user;
     next();
+    
   } catch (error) {
     console.log("Error in secureRoute: ", error);
     res.status(500).json({ error: "Internal server error" });

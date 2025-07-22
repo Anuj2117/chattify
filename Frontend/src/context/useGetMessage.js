@@ -11,7 +11,9 @@ const useGetMessage = () => {
       if (selectedConversation && selectedConversation._id) {
         try {
           const res = await axios.get(
-            `https://chattify-vfz5.onrender.com/api/message/get/${selectedConversation._id}`
+            `/api/message/get/${selectedConversation._id}`,{
+              withCredentials:true
+            }
           );
           setMessage(res.data);
           setLoading(false);

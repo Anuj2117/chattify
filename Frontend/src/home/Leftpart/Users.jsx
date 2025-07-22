@@ -13,8 +13,7 @@ function Users({ user }) {
   const filteredUsers = allUsers.filter(
     (user) => user._id !== authUser?.user._id
   );
-  //console.log(filteredUsers);
-  //console.log(allUsers);
+  console.log(allUsers);
 
   return (
     <div className=" flex w-full justify-center ">

@@ -29,7 +29,9 @@ function Signup() {
     };
     // console.log(userInfo);
     await axios
-      .post(`https://chattify-vfz5.onrender.com/api/user/Signup`, userInfo, { withCredentials: true })
+      .post(`/api/user/Signup`, userInfo, {
+        withCredentials: true,
+      })
       .then((response) => {
         if (response.data) {
           toast.success("Signup successful");
@@ -58,7 +60,7 @@ function Signup() {
             Create a new{" "}
             <span className="text-blue-600 font-semibold">Account</span>
           </h2>
-         
+
           {/* Fullname */}
           <label className="input input-bordered flex items-center gap-2">
             <svg
@@ -164,22 +166,22 @@ function Signup() {
 
           {/* Text & Button */}
           <div className="flex justify-center">
-              <input
-                type="submit"
-                value="Signup"
-                className="text-white bg-blue-600 cursor-pointer w-full rounded-lg py-2"
-              ></input>
-            </div>
-            <p>
-              Have any Account?{" "}
-              <Link
-                to={"/login"}
-                className="text-blue-500 underline cursor-pointer ml-1"
-              >
-                {" "}
-                Login
-              </Link>
-            </p>
+            <input
+              type="submit"
+              value="Signup"
+              className="text-white bg-blue-600 cursor-pointer w-full rounded-lg py-2"
+            ></input>
+          </div>
+          <p>
+            Have any Account?{" "}
+            <Link
+              to={"/login"}
+              className="text-blue-500 underline cursor-pointer ml-1"
+            >
+              {" "}
+              Login
+            </Link>
+          </p>
         </form>
       </div>
     </>

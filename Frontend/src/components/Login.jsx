@@ -21,7 +21,7 @@ function Login() {
     };
 
     axios
-      .post(`https://chattify-vfz5.onrender.com/api/user/login`, userInfo, {
+      .post(`/api/user/login`, userInfo, {
         withCredentials: true,
       })
       .then((response) => {
@@ -29,6 +29,7 @@ function Login() {
           toast.success("Login successful");
         }
         localStorage.setItem("ChatApp", JSON.stringify(response.data));
+        console.log(response.data);
         setAuthUser(response.data);
       })
       .catch((error) => {

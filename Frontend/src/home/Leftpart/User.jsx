@@ -24,7 +24,7 @@ function User({ user }) {
         </div>
 
         <div>
-          <h1 className="font-bold">{user.name}</h1>
+          <h1 className="font-bold">{user.fullname}</h1>
           <span className="">{user.email}</span>
         </div>
       </div>

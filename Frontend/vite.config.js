@@ -9,7 +9,7 @@ export default defineConfig({
     proxy: {
       "/api": {
         target: "https://chattify-vfz5.onrender.com",
-        changeOrigin: true,
+        changeOrigin:true
       },
     },
   },

@@ -7,8 +7,9 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://chattify-git-main-anuj-kushwahas-projects-db7b729e.vercel.app",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST"],
+    credentials:true
   },
 });
 
@@ -20,9 +21,11 @@ export const getReceiverSocketId = (receiverId) => {
 
 io.on("connection", (socket) => {
   console.log("a user connected", socket.id);
+
   const userId = socket.handshake.query.userId;
   if (userId) {
     users[userId] = socket.id;
+
     console.log("Hello ", users);
   }
   // used to send the events to all connected users
@@ -37,4 +40,4 @@ io.on("connection", (socket) => {
   });
 });
 
-export { app, io, server }; 
+export { app, io, server };
