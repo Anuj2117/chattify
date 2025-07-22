@@ -14,11 +14,11 @@ export const SocketProvider = ({ children }) => {
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [authUser] = useAuth();
   
-  //console.log(onlineUsers+"im online")
+  console.log(onlineUsers+"im online")
 
   useEffect(() => {
     if (authUser) {
-      const socket = io(`https://chattify-vfz5.onrender.com`, {
+      const socket = io(`http://localhost:6969`, {
         query: {
           userId: authUser.user._id,
         },
