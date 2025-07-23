@@ -18,7 +18,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io(`http://localhost:6969`, {
+      const socket = io(`https://chattify-vfz5.onrender.com`, {
         query: {
           userId: authUser.user._id,
         },
