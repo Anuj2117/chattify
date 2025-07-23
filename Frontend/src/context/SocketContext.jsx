@@ -17,10 +17,11 @@ export const SocketProvider = ({ children }) => {
   console.log(onlineUsers+"im online")
 
   useEffect(() => {
+    
     if (authUser) {
       const socket = io(`https://chattify-vfz5.onrender.com`, {
         query: {
-          userId: authUser.user._id,
+          userId: authUser?.user?._id,
         },
       });
 
