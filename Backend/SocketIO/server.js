@@ -9,6 +9,7 @@ const server = http.createServer(app);
 const allowedOrigin = [
   "http://localhost:5173",
   "https://chattify-front.onrender.com",
+  "https://chattify-five.vercel.app"
 ];
 const io = new Server(server, {
   cors: {

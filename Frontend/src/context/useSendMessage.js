@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import useConversation from "../statemanage/useConversation.js";
 import axios from "axios";
 const useSendMessage = () => {
-
   const token = localStorage.getItem("token"); // ✅ if stored locally
   console.log(token);
   const [loading, setLoading] = useState(false);
@@ -13,12 +12,10 @@ const useSendMessage = () => {
       const res = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/api/message/send/${selectedConversation._id}`,
         { message },
+
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
           withCredentials: true,
-        }
+        },
       );
       setMessage([...messages, res.data]);
       setLoading(false);

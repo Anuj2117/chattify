@@ -14,6 +14,7 @@ dotenv.config();
 const allowedOrigin = [
   "http://localhost:5173",
   "https://chattify-front.onrender.com",
+  "https://chattify-five.vercel.app"
 ];
 
 // middleware
