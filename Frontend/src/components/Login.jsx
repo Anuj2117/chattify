@@ -21,7 +21,7 @@ function Login() {
     };
 
     axios
-      .post(`/api/user/login`, userInfo, {
+      .post(`${import.meta.env.VITE_BASE_URL}/api/user/login`, userInfo, {
         withCredentials: true,
       })
       .then((response) => {

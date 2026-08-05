@@ -48,8 +48,11 @@ export const login = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ error: "Invalid user credential" });
+    }
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!user || !isMatch) {
+    if (!isMatch) {
       return res.status(400).json({ error: "Invalid user credential" });
     }
     createTokenAndSaveCookie(user._id, res);
@@ -59,7 +62,6 @@ export const login = async (req, res) => {
         _id: user._id,
         fullname: user.fullname,
         email: user.email,
-        
       },
     });
   } catch (error) {
@@ -70,22 +72,33 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
   try {
+    console.log("controller hit")
     res.clearCookie("jwt");
     res.status(201).json({ message: "User logged out successfully" });
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
     res.status(500).json({ error: "Internal server error" });
   }
 };
 
 export const allUsers = async (req, res) => {
   try {
+    console.log("Logged in user:", req.user);
+
     const loggedInUser = req.user._id;
+
+    const users = await User.find().select("-password");
+    console.log("All users:", users);
+
     const filteredUsers = await User.find({
       _id: { $ne: loggedInUser },
     }).select("-password");
-    res.status(201).json(filteredUsers);
+
+    console.log("Filtered users:", filteredUsers);
+
+    return res.status(200).json(filteredUsers);
   } catch (error) {
-    console.log("Error in allUsers Controller: " + error);
+    console.log(error);
+    return res.status(500).json(error);
   }
 };

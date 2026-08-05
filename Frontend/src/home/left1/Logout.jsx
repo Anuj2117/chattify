@@ -6,10 +6,16 @@ import toast from "react-hot-toast";
 
 function Logout() {
   const [loading, setLoading] = useState(false);
+
   const handleLogout = async () => {
     setLoading(true);
     try {
-      const res = await axios.post(`/api/user/logout`);
+      const res = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/user/logout`,
+        {
+          withCredentials: true,
+        },
+      );
       localStorage.removeItem("ChatApp");
       Cookies.remove("jwt");
       setLoading(false);
@@ -20,6 +26,7 @@ function Logout() {
       toast.error("Error in logging out");
     }
   };
+
   return (
     <>
       <div className="bg-slate-950 text-white  flex flex-col justify-end ">

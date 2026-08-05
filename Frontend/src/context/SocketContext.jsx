@@ -19,7 +19,7 @@ export const SocketProvider = ({ children }) => {
   useEffect(() => {
     
     if (authUser) {
-      const socket = io(`https://chattify-vfz5.onrender.com`, {
+      const socket = io(`${import.meta.env.VITE_BASE_URL}`, {
         query: {
           userId: authUser?.user?._id,
         },

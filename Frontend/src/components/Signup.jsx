@@ -29,7 +29,7 @@ function Signup() {
     };
     // console.log(userInfo);
     await axios
-      .post(`/api/user/Signup`, userInfo, {
+      .post(`${import.meta.env.VITE_BASE_URL}/api/user/signup`, userInfo, {
         withCredentials: true,
       })
       .then((response) => {

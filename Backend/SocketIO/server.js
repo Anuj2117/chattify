@@ -5,11 +5,16 @@ import express from "express";
 const app = express();
 
 const server = http.createServer(app);
+
+const allowedOrigin = [
+  "http://localhost:5173",
+  "https://chattify-front.onrender.com",
+];
 const io = new Server(server, {
   cors: {
-    origin: "https://chattify-front.onrender.com",
+    origin: allowedOrigin,
     methods: ["GET", "POST"],
-    credentials:true
+    credentials: true,
   },
 });
 

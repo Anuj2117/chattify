@@ -12,6 +12,10 @@ const router = express.Router();
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/logout", logout);
-router.get("/allusers", secureRoute, allUsers);
+// router.get("/allusers", secureRoute, allUsers);
+router.get("/allusers", (req, res, next) => {
+  console.log("Route hit");
+  next();
+}, secureRoute, allUsers);
 
 export default router;

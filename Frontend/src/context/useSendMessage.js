@@ -11,7 +11,7 @@ const useSendMessage = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        `/api/message/send/${selectedConversation._id}`,
+        `${import.meta.env.VITE_BASE_URL}/api/message/send/${selectedConversation._id}`,
         { message },
         {
           headers: {

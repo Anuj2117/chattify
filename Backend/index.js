@@ -11,15 +11,19 @@ import { app, server } from "./SocketIO/server.js";
 
 dotenv.config();
 
+const allowedOrigin = [
+  "http://localhost:5173",
+  "https://chattify-front.onrender.com",
+];
+
 // middleware
 app.use(
   cors({
-    origin:
-      "https://chattify-front.onrender.com",
+    origin: allowedOrigin,
     credentials: true,
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
 
 app.use(express.json());
@@ -28,12 +32,13 @@ app.use(cookieParser());
 const PORT = process.env.PORT || 6970;
 const URI = process.env.MONGODB_URI;
 
-try {
-  mongoose.connect(URI);
-  console.log("Connected to MongoDB");
-} catch (error) {
-  console.log(error);
-}
+mongoose
+  .connect(URI)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((error) => {
+    console.log("MongoDB connection error:", error);
+    process.exit(1);
+  });
 
 //routes
 app.use("/api/user", userRoute);
