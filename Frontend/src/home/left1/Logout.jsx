@@ -29,11 +29,11 @@ function Logout() {
 
   return (
     <>
-      <div className="bg-slate-950 text-white  flex flex-col justify-end ">
-        <div className="p-3  align-bottom ">
+      <div className="bg-slate-950 text-white flex flex-row md:flex-col justify-end items-center order-first md:order-none">
+        <div className="p-2 md:p-3">
           <button>
             <TbLogout2
-              className="text-5xl p-2 hover:bg-gray-600 rounded-lg duration-300"
+              className="text-3xl md:text-5xl p-2 hover:bg-gray-600 rounded-lg duration-300"
               onClick={handleLogout}
             />
           </button>

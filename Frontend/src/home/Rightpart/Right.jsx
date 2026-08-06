@@ -12,26 +12,25 @@ function Right() {
   useEffect(() => {
     return setSelectedConversation(null);
   }, [setSelectedConversation]);
+
   return (
-      <div className="w-full bg-slate-900 text-gray-300">
-        <div>
-          {!selectedConversation ? (
-            <NoChatSelected />
-          ) : (
-            <>
-              <Chatuser />
-              <div
-                className=" flex-1 overflow-y-auto"
-                style={{ maxHeight: "calc(88vh - 8vh)" }}
-              >
-                <Messages />
-              </div>
-              <Typesend />
-            </>
-          )}
-        </div>
-      </div>
-    
+    <div
+      className={`${
+        selectedConversation ? "flex" : "hidden"
+      } md:flex flex-col w-full md:flex-1 bg-slate-900 text-gray-300 h-screen md:h-auto`}
+    >
+      {!selectedConversation ? (
+        <NoChatSelected />
+      ) : (
+        <>
+          <Chatuser />
+          <div className="flex-1 overflow-y-auto">
+            <Messages />
+          </div>
+          <Typesend />
+        </>
+      )}
+    </div>
   );
 }
 
@@ -39,20 +38,19 @@ export default Right;
 
 const NoChatSelected = () => {
   const [authUser] = useAuth();
-  //console.log(authUser);
   return (
     <>
-      <div className="  relative">
+      <div className="relative">
         <label
           htmlFor="my-drawer-2"
           className="btn btn-ghost drawer-button lg:hidden absolute left-5"
         >
           <CiMenuFries className="text-white text-xl" />
         </label>
-        <div className="flex h-screen items-center justify-center">
-          <h1 className="text-center">
+        <div className="flex h-screen items-center justify-center px-4 text-center">
+          <h1 className="text-base md:text-xl">
             Welcome{" "}
-            <span className="font-semibold text-xl">
+            <span className="font-semibold text-lg md:text-xl">
               {authUser.user.fullname}
             </span>
             <br />

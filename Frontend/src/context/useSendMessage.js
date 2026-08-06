@@ -3,7 +3,7 @@ import useConversation from "../statemanage/useConversation.js";
 import axios from "axios";
 const useSendMessage = () => {
   const token = localStorage.getItem("token"); // ✅ if stored locally
-  console.log(token);
+  //console.log(token);
   const [loading, setLoading] = useState(false);
   const { messages, setMessage, selectedConversation } = useConversation();
   const sendMessages = async (message) => {

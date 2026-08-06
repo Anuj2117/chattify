@@ -10,7 +10,6 @@ import Logout from "./home/left1/Logout";
 import { Navigate, Route, Routes } from "react-router-dom";
 function App() {
   const [authUser, setAuthUser] = useAuth();
-  //console.log(authUser);
   return (
     <>
       <Routes>
@@ -18,14 +17,11 @@ function App() {
           path="/"
           element={
             authUser ? (
-              <div className="flex h-screen">
-                <Logout />
+              <div className="flex flex-col md:flex-row h-screen">
+                {/* <Logout /> */}
                 <Left />
                 <Right />
               </div>
-
-
-            
             ) : (
               <Navigate to={"/login"} />
             )
@@ -46,17 +42,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
- 

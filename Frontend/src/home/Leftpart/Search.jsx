@@ -16,8 +16,8 @@ function Search() {
     if (!search) return;
 
     const conversation = allUsers.find((user) =>
-      user.name && user.name.toLowerCase().includes(search.toLowerCase())
-    );
+  user.fullname?.toLowerCase().includes(search.trim().toLowerCase())
+);
 
     if (conversation) {
       setSelectedConversation(conversation);
@@ -28,21 +28,21 @@ function Search() {
   };
 
   return (
-    <div className=" h-[10vh]">
-      <div className="px-6 py-4">
+    <div className="h-[10vh]">
+      <div className="px-3 md:px-6 py-4">
         <form onSubmit={handleSubmit}>
-          <div className="flex space-x-3">
-            <label className=" border-[1px] border-gray-700 bg-slate-900 rounded-lg p-3 flex items-center gap-2 w-[80%]">
+          <div className="flex space-x-2 md:space-x-3">
+            <label className="border-[1px] border-gray-700 bg-slate-900 rounded-lg p-2 md:p-3 flex items-center gap-2 w-[80%]">
               <input
                 type="text"
-                className="grow outline-none bg-transparent"
+                className="grow outline-none bg-transparent text-sm md:text-base"
                 placeholder="Search"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
             </label>
             <button>
-              <FaSearch className="text-5xl p-2 hover:bg-gray-600 rounded-full duration-300" />
+              <FaSearch className="text-3xl md:text-5xl p-2 hover:bg-gray-600 rounded-full duration-300" />
             </button>
           </div>
         </form>
